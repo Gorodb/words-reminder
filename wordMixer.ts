@@ -1,24 +1,42 @@
 import fse from 'fs-extra';
 import inquirer from 'inquirer';
+import 'colors';
 
 (async () => {
-	const words = (await fse.readFile('words.txt')).toString().split('\n')
+	const wordsFromArray = (await fse.readFile('irregularWords.txt')).toString().split('\n')
+	let wordGroups = wordsFromArray.map(word => word.split('-'))
 	const randomFromArray = (items: any[]) => items[Math.floor(Math.random() * items.length)]
 
+	console.clear();
 	console.log("Ready to start?");
 
-	const questions = [
+	const answers = [
 		{
 			type: 'input',
-			name: 'Press enter to continue',
+			name: 'Translation',
 			message: "",
 		},
 	];
-	let answer = {name: ""};
 
-	while (answer.name != 'q') {
-		answer = await inquirer.prompt(questions);
-		console.log(randomFromArray(words));
+	const empty = [
+		{
+			type: 'confirm',
+			name: 'Continue',
+			message: "",
+		},
+	];
+
+	let isContinue = true;
+	let answer = {Translation: ""};
+
+	while (isContinue && wordGroups.length > 0) {
+		const currentWord = randomFromArray(wordGroups);
+		console.log("Word: ".cyan.italic, currentWord[1]);
+		answer = {...answer, ...(await inquirer.prompt(answers))};
+		console.log(currentWord[2]);
+		wordGroups = wordGroups.filter(group => group[0] !== currentWord[0]);
+		let {Continue} = await inquirer.prompt(empty);
+		isContinue = Continue;
+		console.clear();
 	}
-
 })()
