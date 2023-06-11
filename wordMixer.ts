@@ -1,6 +1,7 @@
 import fse from 'fs-extra';
 import inquirer from 'inquirer';
 import 'colors';
+import os from 'os'
 
 const randomFromArray = (items: any[]) => items[Math.floor(Math.random() * items.length)];
 
@@ -22,9 +23,7 @@ const empty = [
 
 (async () => {
 	const fileName = process.argv.find(value => value.includes("-name"))?.replace('-name=', '') || "irregularWords.txt"
-	let wordGroups: string[][] = (await fse.readFile(fileName)).toString()
-		.split('\n')
-		.map(word => word.split('-'));
+	let wordGroups: string[][] = (await fse.readFile(fileName)).toString().split(os.EOL).map(word => word.split('-'));
 
 	console.clear();
 	console.log("Ready to start?");

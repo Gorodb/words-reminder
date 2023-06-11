@@ -1,13 +1,11 @@
 62 - дуть -blow blew blown -
 64 - летать -fly flew flown -
 54 - лежать -lie lay lain -
-1 - получить, заиметь - get, got, got -
 57 - рвать -tear tore torn -
 58 - носить (одежду) - wear wore worn -
 26 - положить - lay, laid, laid -
-67 - показывать -show showed shown -
-59 - простить -forgive forgave forgiven -
-11 - покидать, оставлять - leave, left, left -
+67 - показывать - show showed shown -
+59 - простить - forgive forgave forgiven -
 42 - восстать, возникать - arise arose arisen -
 23 - сказать, приказать - tell, told, told -
 28 - сказать - say, said, said -
