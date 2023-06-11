@@ -11,7 +11,8 @@
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "refreshNodeModules": "rm -rf node_modules && yarn",
-    "start": "ts-node wordMixer.ts"
+    "start": "ts-node wordMixer.ts -name=irregularWords.txt",
+    "repeat": "ts-node wordMixer.ts -name=wordsToRepeat.txt"
   },
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.22.5",
