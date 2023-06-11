@@ -21,7 +21,7 @@ const empty = [
 ];
 
 (async () => {
-	const fileName = process.argv.find(value => value.includes("name"))?.replace('-name=', '') || "irregularWords.txt"
+	const fileName = process.argv.find(value => value.includes("-name"))?.replace('-name=', '') || "irregularWords.txt"
 	let wordGroups: string[][] = (await fse.readFile(fileName)).toString()
 		.split('\n')
 		.map(word => word.split('-'));
