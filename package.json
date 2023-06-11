@@ -10,7 +10,8 @@
   },
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "refreshNodeModules": "rm -rf node_modules && yarn"
+    "refreshNodeModules": "rm -rf node_modules && yarn",
+    "start": "ts-node wordMixer.ts"
   },
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.22.5",
