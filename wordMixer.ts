@@ -2,29 +2,31 @@ import fse from 'fs-extra';
 import inquirer from 'inquirer';
 import 'colors';
 
+const randomFromArray = (items: any[]) => items[Math.floor(Math.random() * items.length)];
+
+const answers = [
+	{
+		type: 'input',
+		name: 'Translation',
+		message: "",
+	},
+];
+
+const empty = [
+	{
+		type: 'confirm',
+		name: 'Continue',
+		message: "",
+	},
+];
+
 (async () => {
-	const wordsFromArray = (await fse.readFile('irregularWords.txt')).toString().split('\n')
-	let wordGroups = wordsFromArray.map(word => word.split('-'))
-	const randomFromArray = (items: any[]) => items[Math.floor(Math.random() * items.length)]
+	let wordGroups: string[][] = (await fse.readFile('irregularWords.txt')).toString()
+		.split('\n')
+		.map(word => word.split('-'));
 
 	console.clear();
 	console.log("Ready to start?");
-
-	const answers = [
-		{
-			type: 'input',
-			name: 'Translation',
-			message: "",
-		},
-	];
-
-	const empty = [
-		{
-			type: 'confirm',
-			name: 'Continue',
-			message: "",
-		},
-	];
 
 	let isContinue = true;
 	let answer = {Translation: ""};
